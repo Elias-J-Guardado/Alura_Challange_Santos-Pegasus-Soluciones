@@ -1,0 +1,29 @@
+# Entorno virtual
+venv/
+env/
+ENV/
+
+# Variables de entorno (API keys)
+.env
+
+# Índice vectorial generado (se reconstruye con ingest.py)
+faiss_index/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Cache de modelos de HuggingFace (si se descarga local)
+.cache/
+
+# Editor / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Logs
+*.log
+EOF
