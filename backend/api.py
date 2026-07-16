@@ -40,3 +40,16 @@ qa_chain = RetrievalQA.from_chain_type(
     chain_type_kwargs={"prompt": PromptTemplate(template=prompt_template, input_variables=["context", "questions"])},
     return_source_documents = True
 )
+
+# API
+app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+class Question(BaseModel):
+    question: str
