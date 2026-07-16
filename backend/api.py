@@ -34,5 +34,9 @@ prompt_template = """
 """
 
 qa_chain = RetrievalQA.from_chain_type(
-    
+    llm = llm,
+    retriever=vectorestore.as_retriever(search_kwargs={"k":4}),
+    chain_type="stuff",
+    chain_type_kwargs={"prompt": PromptTemplate(template=prompt_template, input_variables=["context", "questions"])},
+    return_source_documents = True
 )
