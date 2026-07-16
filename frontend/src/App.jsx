@@ -23,7 +23,7 @@ function App() {
       const data = await res.json();
       setMensajes((prev) => [...prev, { rol: "agente", texto: data.answer, fuentes: data.sources }]);
     } catch {
-      setMensajes((prev) => [...prev, { rol: "agente", texto: "No se peude establecer conexión con el agente.", fuentes: [] }]);
+      setMensajes((prev) => [...prev, { rol: "agente", texto: "No se puede establecer conexión con el agente.", fuentes: [] }]);
     } finally {
       setCargando(false);
     }
