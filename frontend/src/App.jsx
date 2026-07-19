@@ -3,7 +3,7 @@ import { Mensaje } from "./components/Mensaje";
 import { Cargando } from "./components/Cargando";
 import { EntradaTexto } from "./components/EntradaTexto";
 
-const API_URL = import.meta.env.VITE_API_URL || "url-aun-no-determinada";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
 
 function App() {
   const [mensajes, setMensajes] = useState([]);
