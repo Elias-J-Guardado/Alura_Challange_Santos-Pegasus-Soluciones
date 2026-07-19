@@ -3,7 +3,7 @@ function Mensaje({ rol, texto, fuentes = [] }) {
 
     return (
         <div className={`d-flex flex-column mb-3 ${esUsuario ? "align-items-end" : "align items-start"}"`}>
-            <small className="text-muted text-uppercase" style={{ fontSize: "0.7rem" }}>
+            <small className="text-white text-uppercase" style={{ fontSize: "0.7rem" }}>
                 {esUsuario ? "vos" : "pegasus-agent"}
             </small>
             <div
@@ -13,7 +13,7 @@ function Mensaje({ rol, texto, fuentes = [] }) {
             >
                 {texto}
             </div>
-            {fuentes.length > 0&& (
+            {fuentes.length > 0 && (
                 <div className="d-flex flex-wrap grap-1 mt-1">
                     {fuentes.map((f) => (
                         <span key={f} className="badge bg-secondary-subtle text-warning border border-warning-subtle">
