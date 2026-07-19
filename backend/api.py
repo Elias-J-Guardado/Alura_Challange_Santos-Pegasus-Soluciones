@@ -35,9 +35,9 @@ prompt_template = """
 
 qa_chain = RetrievalQA.from_chain_type(
     llm = llm,
-    retriever=vectorestore.as_retriever(search_kwargs={"k":4}),
+    retriever=vectorestore.as_retriever(search_kwargs={"k":6}),
     chain_type="stuff",
-    chain_type_kwargs={"prompt": PromptTemplate(template=prompt_template, input_variables=["context", "questions"])},
+    chain_type_kwargs={"prompt": PromptTemplate(template=prompt_template, input_variables=["context", "question"])},
     return_source_documents = True
 )
 
@@ -53,3 +53,16 @@ app.add_middleware(
 
 class Question(BaseModel):
     question: str
+
+@app.get("/health")
+def health():
+    return {"status": "ok"}
+
+@app.post("/ask")
+def ask(q: Question):
+    result = qa_chain.invoke({"query": q.question})
+    sources = list({
+        doc.metadata.get("source", "").split("/")[-1]
+        for doc in result["source_documents"]
+    })
+    return{"answer": result["result"], "sources": sources}
