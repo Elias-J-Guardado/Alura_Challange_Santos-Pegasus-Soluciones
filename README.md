@@ -4,7 +4,7 @@ Agente de inteligencia artificial (RAG) que responde preguntas sobre los documen
  
 Proyecto desarrollado como challenge del programa ONE AI de Alura LATAM
 
-## 🧠 Arquitectura
+## Arquitectura
  
 El proyecto está dividido en dos partes independientes que se comunican por HTTP:
  
@@ -35,7 +35,7 @@ El proyecto está dividido en dos partes independientes que se comunican por HTT
 2. **Consulta** (`api.py`, corre como servidor): al recibir una pregunta, el retriever busca los fragmentos más relevantes en el índice FAISS, se los pasa como contexto al LLM (**Groq / Llama 3.3 70B**) junto con un prompt que restringe la respuesta al contenido de los documentos, y devuelve la respuesta junto con las fuentes citadas.
 3. **Interfaz** (React): el usuario escribe su pregunta en un chat estilo consola de desarrollo, la manda al backend y muestra la respuesta junto con badges indicando de qué documento(s) salió la información.
 
-## 💬 Ejemplos de preguntas y respuestas
+## Ejemplos de preguntas y respuestas
  
 **Pregunta:** ¿Cuántas aprobaciones necesita un Pull Request antes del merge?
 **Respuesta:** Según la información proporcionada, un Pull Request necesita al menos 2 aprobaciones para ser considerado aprobado. Cualquier intento de push directo será rechazado por GitHub.
@@ -55,7 +55,7 @@ El proyecto está dividido en dos partes independientes que se comunican por HTT
  
 ---
 
-## 🚀 Cómo ejecutar el proyecto localmente
+## Cómo ejecutar el proyecto localmente
  
 ### Requisitos previos
 - Python 3.10+
@@ -117,3 +117,43 @@ pnpm dev
 Abrí la URL que te muestre la terminal (normalmente `http://localhost:5173`).
  
 ---
+
+## 🌐 Deploy
+ 
+- **Backend:** *(https://alura-challange-santos-pegasus-soluciones.onrender.com)*
+- **Frontend:** *(https://santos-pegasus-soluciones-challange.netlify.app/)*
+
+**Captura de proyecto en producción**
+
+![Captura de la aplicación en producción](imagenes/cap_deploy.png)
+ 
+---
+
+## Estructura del proyecto
+ 
+```
+pegasus-agent/
+├── backend/
+│   ├── docs/                # PDFs internos de la empresa
+│   ├── ingest.py             # Construye el índice FAISS
+│   ├── api.py                 # Servidor FastAPI con el agente RAG
+│   ├── requirements.txt
+│   └── .env                   # GROQ_API_KEY (no versionado)
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── Mensaje.jsx
+│   │   │   ├── Cargando.jsx
+│   │   │   └── EntradaTexto.jsx
+│   │   └── App.jsx
+│   └── .env                   # VITE_API_URL (no versionado)
+├── .gitignore
+└── README.md
+```
+
+## Notas
+ 
+- Los embeddings se generan localmente (sin costo ni API key), solo la generación de respuestas usa la API de Groq.
+- El backend es *stateless*: no guarda historial de conversación entre peticiones; el historial visual del chat vive únicamente en el estado del frontend.
+- Documentos fuente: manual de onboarding, guías de ingeniería back-end y front-end, protocolo de incidentes, y arquitectura de microservicios de Santo Pegasus Soluciones (empresa ficticia usada como caso de estudio).
+ 
