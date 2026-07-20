@@ -4,6 +4,18 @@ Agente de inteligencia artificial (RAG) que responde preguntas sobre los documen
  
 Proyecto desarrollado como challenge del programa ONE AI de Alura LATAM
 
+## Índice
+
+- [Arquitectura](#arquitectura)
+  - [Flujo del pipeline RAG](#flujo-del-pipeline-rag)
+- [Ejemplos de preguntas y respuestas](#ejemplos-de-preguntas-y-respuestas)
+- [Cómo ejecutar el proyecto localmente](#cómo-ejecutar-el-proyecto-localmente)
+- [Deploy](#-deploy)
+- [Estructura del proyecto](#estructura-del-proyecto)
+- [Notas](#notas)
+
+---
+
 ## Arquitectura
  
 El proyecto está dividido en dos partes independientes que se comunican por HTTP:
@@ -118,7 +130,7 @@ Abrí la URL que te muestre la terminal (normalmente `http://localhost:5173`).
  
 ---
 
-## 🌐 Deploy
+## Deploy
  
 - **Backend:** *(https://alura-challange-santos-pegasus-soluciones.onrender.com)*
 - **Frontend:** *(https://santos-pegasus-soluciones-challange.netlify.app/)*
